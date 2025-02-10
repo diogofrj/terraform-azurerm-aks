@@ -20,12 +20,33 @@ variable "tags" {
   default     = {}
 }
 
-variable "vnet_name" {
-  description = "Nome da VNet"
+variable "aks_name" {
+  description = "Nome do cluster AKS"
   type        = string
 }
 
-variable "vnet_address_space" {
-  description = "Espaço de endereços da VNet"
-  type        = list(string)
+
+variable "dns_prefix" {
+  description = "Prefixo DNS para o cluster AKS"
+  type        = string
+}
+
+variable "default_node_pool_name" {
+  description = "Nome do pool de nós padrão"
+  type        = string
+}
+
+variable "default_node_pool_count" {
+  description = "Número de nós no pool padrão"
+  type        = number
+}
+
+variable "default_node_pool_vm_size" {
+  description = "Tamanho da VM do pool padrão"
+  type        = string
+}
+
+variable "identity_type" {
+  description = "Tipo de identidade do cluster AKS"
+  type        = string
 }

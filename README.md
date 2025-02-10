@@ -1,10 +1,10 @@
 <!-- BEGIN_TF_DOCS -->
 <!-- Título do Módulo -->
-# 🌐 Terraform AzureRM - Virtual Network
+# 🌐 Terraform AzureRM - Azure Kubernetes Service
 
 ![Banner](docs/images/Module-banner.png)
 
-# Como utilizar este módulo
+# 📚 Como utilizar este módulo
 
 ```hcl
 # providers.tf
@@ -101,18 +101,22 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azurerm_kubernetes_cluster.aks](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster) | resource |
 | [azurerm_resource_group.rg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azurerm_virtual_network.vnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network) | resource |
 | [azurerm_resource_group.rgrp](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/resource_group) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_aks_name"></a> [aks\_name](#input\_aks\_name) | Nome do cluster AKS | `string` | n/a | yes |
+| <a name="input_default_node_pool_count"></a> [default\_node\_pool\_count](#input\_default\_node\_pool\_count) | Número de nós no pool padrão | `number` | n/a | yes |
+| <a name="input_default_node_pool_name"></a> [default\_node\_pool\_name](#input\_default\_node\_pool\_name) | Nome do pool de nós padrão | `string` | n/a | yes |
+| <a name="input_default_node_pool_vm_size"></a> [default\_node\_pool\_vm\_size](#input\_default\_node\_pool\_vm\_size) | Tamanho da VM do pool padrão | `string` | n/a | yes |
+| <a name="input_dns_prefix"></a> [dns\_prefix](#input\_dns\_prefix) | Prefixo DNS para o cluster AKS | `string` | n/a | yes |
+| <a name="input_identity_type"></a> [identity\_type](#input\_identity\_type) | Tipo de identidade do cluster AKS | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Localização do Azure onde os recursos serão criados | `string` | n/a | yes |
 | <a name="input_resource_group_name"></a> [resource\_group\_name](#input\_resource\_group\_name) | Nome do grupo de recursos | `string` | n/a | yes |
-| <a name="input_vnet_address_space"></a> [vnet\_address\_space](#input\_vnet\_address\_space) | Espaço de endereços da VNet | `list(string)` | n/a | yes |
-| <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | Nome da VNet | `string` | n/a | yes |
 | <a name="input_create_resource_group"></a> [create\_resource\_group](#input\_create\_resource\_group) | Controla se o grupo de recursos deve ser criado (true) ou usar um existente (false) | `bool` | `true` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Tags a serem aplicadas aos recursos | `map(string)` | `{}` | no |
 
@@ -120,7 +124,9 @@ No modules.
 
 | Name | Description |
 |------|-------------|
-| <a name="output_vnet_id"></a> [vnet\_id](#output\_vnet\_id) | ID da VNet |
+| <a name="output_aks_name"></a> [aks\_name](#output\_aks\_name) | n/a |
+| <a name="output_client_certificate"></a> [client\_certificate](#output\_client\_certificate) | n/a |
+| <a name="output_kube_config"></a> [kube\_config](#output\_kube\_config) | n/a |
 
 <h2 align="left">Contatos:</h2>
 <p align="left">

@@ -24,3 +24,4 @@ terraform.rc
 
 
 .terraform.lock.hcl
+docs/images/banner-modulo-template.drawio

@@ -10,11 +10,26 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.tags
 }
 
-resource "azurerm_virtual_network" "vnet" {
+
+
+
+resource "azurerm_kubernetes_cluster" "aks" {
+  depends_on          = [azurerm_resource_group.rg]
   count               = var.create_resource_group ? 1 : 0
-  name                = var.vnet_name
+  name                = var.aks_name
   location            = var.location
   resource_group_name = var.resource_group_name
-  address_space       = var.vnet_address_space
-  tags                = var.tags
+  dns_prefix          = var.dns_prefix
+
+  default_node_pool {
+    name       = var.default_node_pool_name
+    node_count = var.default_node_pool_count
+    vm_size    = var.default_node_pool_vm_size
+  }
+
+  identity {
+    type = var.identity_type
+  }
+
+  tags = var.tags
 }

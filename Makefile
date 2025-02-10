@@ -11,7 +11,7 @@ ARM_TENANT_ID		?= $(shell grep ARM_TENANT_ID .env | cut -d '=' -f2)
 TF_PLAN_FILE        = tf.plan
 VAR_FILE            = terraform.tfvars
 
-CHDIR = -chdir=examples/network-basic
+CHDIR = -chdir=examples/aks-cluster-basic
 
 .PHONY: help
 help:
