@@ -43,30 +43,40 @@ module "labels" {
   region       = "eastus2"
 }
 
-module "vnet" {
-
-  source  = "../../"
+module "aks" {
+  source = "../../"
   # Resource Group
   create_resource_group = true
   resource_group_name   = module.labels.resource_group_name
   location              = "eastus2"
-  vnet_name             = module.labels.vnet_name
-  vnet_address_space    = ["10.1.0.0/16", "192.168.0.0/16"]
+  aks_name              = module.labels.aks_name
+  dns_prefix            = trim(module.labels.aks_name, "-")
+  default_node_pool_name = "default"
+  default_node_pool_count = 1
+  default_node_pool_vm_size = "Standard_DS2_v2"
+  identity_type = "SystemAssigned"
 
   tags = {
-    ProjectName  = "demo-internal"
-    Env          = "dev"
-    Owner        = "user@example.com"
-    BusinessUnit = "CORP"
-    ServiceClass = "Gold"
+    "project"     = "module-aks"
+    "environment" = "dev"
+
   }
 }
 ```
 ```hcl
 # outputs.tf
-output "vnet_id" {
-  description = "ID da VNet"
-  value       = module.vnet.vnet_id
+output "client_certificate" {
+  value     = module.aks.client_certificate
+  sensitive = true
+}
+
+output "kube_config" {
+  value     = module.aks.kube_config
+  sensitive = true
+}
+
+output "aks_name" {
+  value = module.aks.aks_name
 }
 ```
 
