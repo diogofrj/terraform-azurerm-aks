@@ -1,5 +1,5 @@
 module "labels" {
-  source      = "git::https://github.com/diogofrj/templates-tf-modules.git//examples/azure/labels?ref=v0.0.1"
+  source      = "git::https://github.com/diogofrj/terraform-template-modules.git//examples/azure/labels?ref=v0.0.1"
   project     = "module-aks"
   environment = "dev"
   region      = "eastus2"
@@ -22,6 +22,5 @@ module "aks" {
   tags = {
     "project"     = "module-aks"
     "environment" = "dev"
-
   }
 }
